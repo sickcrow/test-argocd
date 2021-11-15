@@ -14,7 +14,7 @@ spec:
         app: llamadoresdev-kustomize
     spec:
       containers:
-      - image: registry.sanatorioallende.com/appdev/llamadoresdev:latest
+      - image: nginx:latest
         imagePullPolicy: Always
         resources:
           limits: 
@@ -23,41 +23,41 @@ spec:
           requests:
             cpu: "10m"
             memory: "150Mi"
-        volumeMounts:
-        - name: llamadoresdev-config
-          mountPath: /usr/local/apache2/conf/httpd.conf
-          subPath: httpd.conf
-        - name: llamadoresdev-config
-          mountPath: /usr/local/apache2/conf/sites/llamadoresdev.conf
-          subPath: llamadoresdev.conf
+        #volumeMounts:
+        #- name: llamadoresdev-config
+        #  mountPath: /usr/local/apache2/conf/httpd.conf
+        #  subPath: httpd.conf
+        #- name: llamadoresdev-config
+        #  mountPath: /usr/local/apache2/conf/sites/llamadoresdev.conf
+        #  subPath: llamadoresdev.conf
         ports:
         - containerPort: 80
-        livenessProbe:
-          failureThreshold: 3
-          tcpSocket:
-            port: 80
-          initialDelaySeconds: 20
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 3
+        #livenessProbe:
+        #  failureThreshold: 3
+        #  tcpSocket:
+        #    port: 80
+        #  initialDelaySeconds: 20
+        #  periodSeconds: 10
+        #  successThreshold: 1
+        #  timeoutSeconds: 3
         name: llamadoresdev-kustomize
-        env:
-        - name: TZ
-          value: America/Argentina/Buenos_Aires
-        readinessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /
-            port: 80
-            scheme: HTTP
-          initialDelaySeconds: 40
-          periodSeconds: 60
-          successThreshold: 1
-          timeoutSeconds: 3
-      volumes:
-      - name: llamadoresdev-config
-        configMap: 
-          name: llamadoresdev-config-kustomize
-      imagePullSecrets:
-      - name: registry-harbor-internal
-      restartPolicy: Always
+        #env:
+        #- name: TZ
+        #  value: America/Argentina/Buenos_Aires
+        #readinessProbe:
+        #  failureThreshold: 3
+        #  httpGet:
+        #    path: /
+        #    port: 80
+        #    scheme: HTTP
+        #  initialDelaySeconds: 40
+        #  periodSeconds: 60
+        #  successThreshold: 1
+        #  timeoutSeconds: 3
+      #volumes:
+      #- name: llamadoresdev-config
+      #  configMap: 
+      #    name: llamadoresdev-config-kustomize
+      #imagePullSecrets:
+      #- name: registry-harbor-internal
+      #restartPolicy: Always
