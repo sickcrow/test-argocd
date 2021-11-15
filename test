@@ -1,0 +1,25 @@
+if [ ${RD_OPTION_APP} == jobs ]; then
+VERSION_ACTUAL="$(cat ${DIR_MANIFEST}/cd/deployment-${RD_OPTION_APP}.yaml | grep -o ${REGISTRY}${RD_OPTION_APP}-${RD_OPTION_ENV}:*.*.*.*.* | cut -c 45-57)"
+echo "[INFO] Version actual: ${VERSION_ACTUAL}"
+echo "[INFO] Version deploy: ${RD_OPTION_RELEASE}"
+echo "[INFO] Properties update: ${RD_OPTION_PROPERTIES}"
+sed -i "s|${REGISTRY}${RD_OPTION_APP}-${RD_OPTION_ENV}:${VERSION_ACTUAL}|${REGISTRY}${RD_OPTION_APP}-${RD_OPTION_ENV}:${RD_OPTION_RELEASE}|g" ${DIR_MANIFEST}/cd/deployment-${RD_OPTION_APP}.yaml
+echo "#${RD_OPTION_PROPERTIES}" >> ${DIR_MANIFEST}/cd/deployment-${RD_OPTION_APP}.yaml
+
+
+cd ${DIR_MANIFEST}
+rm -rf ${RD_OPTION_APP}
+git commit -a -m "Upgrade ${RD_OPTION_APP}-${RD_OPTION_ENV} to ${RD_OPTION_RELEASE}"
+git push origin ${RD_OPTION_ENV} --quiet
+
+echo "[INFO] Clean dir & docker system"
+rm -rf ${DIR_MANIFEST} ${DIR_PROPS}
+docker system prune -a -f > /dev/null 2> /dev/null
+
+ARGOAPP="gpp.agea.com.ar"
+echo "Argo sync ${ARGOAPP}"
+
+argocd --auth-token ${ARGOTOKEN} app sync ${ARGOAPP} --async --grpc-web-root-path /argocd
+
+
+ARGOTOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3YTE1MzBjOS1kNWZjLTQ4NTctYjI3ZS1kMjljYzkyYmVlYmYiLCJpYXQiOjE2MTQyMTk1NjYsImlzcyI6ImFyZ29jZCIsIm5iZiI6MTYxNDIxOTU2Niwic3ViIjoic2lja2Nyb3cifQ.5E-C2btyaSpr_riwcsK6YKweJova0wxN1ckNslgXn7o"

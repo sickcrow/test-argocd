@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+    name: llamadoresdev-kustomize
+    namespace: env-dev
+    annotations:
+        nginx.ingress.kubernetes.io/server-snippet: |
+          more_clear_input_headers "Host" "X-Forwarded-Host";
+          proxy_set_header Host $http_host;
+          proxy_set_header X-Forwarded-Host $http_x_forwarded_host;
+spec:
+  rules:
+  - host: llamadoresdev-kustomize.sanatorioallende.com
+    http:
+      paths:
+      - backend:
+          serviceName: llamadoresdev-kustomize
+          servicePort: 80
+        path: /
