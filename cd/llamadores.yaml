@@ -58,6 +58,6 @@ spec:
       #- name: llamadoresdev-config
       #  configMap: 
       #    name: llamadoresdev-config-kustomize
-      #imagePullSecrets:
-      #- name: registry-harbor-internal
-      #restartPolicy: Always
+      imagePullSecrets:
+      - name: registry-harbor-internal
+      restartPolicy: Always
