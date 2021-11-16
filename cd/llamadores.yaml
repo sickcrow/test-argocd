@@ -14,7 +14,7 @@ spec:
         app: llamadoresdev-kustomize
     spec:
       containers:
-      - image: registry.sanatorioallende.com/appdev/llamadoresdev:latest
+      - image: registry.sanatorioallende.com/test-cd/llamadoresdev:latest
         imagePullPolicy: Always
         resources:
           limits: 
