@@ -13,9 +13,7 @@ pipeline {
                 '''
             }
         }
-    }
-    stages {
-        stage('Dockerize webapp') {
+        stage('Deploy k8s') {
             steps {
                 sh '''
                  ARGOCD_SERVER="devops.agea.com.ar/argocd"
