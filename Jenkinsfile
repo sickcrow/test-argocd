@@ -16,7 +16,7 @@ pipeline {
         stage('Deploy k8s') {
             steps {
                 sh '''
-                 ARGOCD_SERVER="devops.agea.com.ar/argocd"
+                 ARGOCD_SERVER="devops.agea.com.ar"
                  APP_NAME="test-cd"
                  IMAGE="registry-devops.agea.com.ar/ms/webapp/jenkins-webapp:${BUILD_ID}"
                  TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3YTE1MzBjOS1kNWZjLTQ4NTctYjI3ZS1kMjljYzkyYmVlYmYiLCJpYXQiOjE2MTQyMTk1NjYsImlzcyI6ImFyZ29jZCIsIm5iZiI6MTYxNDIxOTU2Niwic3ViIjoic2lja2Nyb3cifQ.5E-C2btyaSpr_riwcsK6YKweJova0wxN1ckNslgXn7o"
@@ -28,8 +28,8 @@ pipeline {
                  ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} app sync ${ARGOAPP} --async --grpc-web-root-path /argocd
                         
                  # Deploy to ArgoCD
-                 ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} --grpc-web-root-path /argocd app sync $APP_NAME --force --insecure
-                 ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} --grpc-web-root-path /argocd app wait $APP_NAME --timeout 600 --insecure
+                 ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} --grpc-web-root-path /argocd app sync $APP_NAME --force
+                 ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} --grpc-web-root-path /argocd app wait $APP_NAME --timeout 600
                 '''
             }
         }
