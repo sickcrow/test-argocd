@@ -3,24 +3,9 @@ pipeline {
     stages {
         stage('Dockerize llamadoresdev') {
             steps {
-                sh "sudo docker system prune -a --force"
-                sh "sudo rm -rf /gitlabs/automation/" 
-                sh "sudo rm -rf /tmp/llamadoresdev/"
-                sh "sudo mkdir /tmp/llamadoresdev"
-                sh "cd /gitlabs && sudo git clone git@gitlab.sanatorioallende.com:sserrano/automation.git"
-                sh "sudo chmod 777 /gitlabs -R"
-            dir("/tmp/llamadoresdev/"){
-                 sh "sudo wget http://deploy.sanatorioallende.com/llamadoresdev.zip"
-                 sh "sudo unzip llamadoresdev.zip"
-                 sh "sudo rm -rf llamadoresdev.zip"
-                 sh "sudo cp -R -f /tmp/llamadoresdev/ /gitlabs/automation/appdev/llamadores/docker.install/llamadoresdev/"
-                 sh "sudo chmod 777 /gitlabs -R"
-            }
-            dir("/gitlabs/automation/appdev/llamadores/docker.install/"){
-                 sh "sudo docker build . -t frontendllamadoresdev:${BUILD_ID}"
-                 sh "sudo docker push registry.sanatorioallende.com/appdev/llamadoresdev:${BUILD_ID}"
-            }       
-                 sh "sudo rm -rf /gitlabs/automation/"                      
+                sh '''
+                docker ps
+                 '''
             }
         }
         stage ('Deploy_K8S') {
