@@ -61,7 +61,7 @@ spec:
                 values:
                 - Testing
       containers:
-      - image: registry-devops.agea.com.ar/ddr/jenkins-webapp:1
+      - image: registry-devops.agea.com.ar/ms/jenkins-webapp:latest
         imagePullPolicy: Always
         resources:
           limits: 
