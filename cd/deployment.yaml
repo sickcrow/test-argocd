@@ -1,0 +1,77 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: webapp-jenkins-test
+  namespace: default
+spec:
+  rules:
+  - host:
+    http:
+      paths:
+      - backend:
+          serviceName: webapp-jenkins-test
+          servicePort: 80
+        path: /
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-jenkins-test
+  namespace: default
+  labels:
+    service: webapp-jenkins-test
+spec:
+  type: ClusterIP
+  selector:
+    app: webapp-jenkins-test
+  ports:
+  - name: nginx
+    port: 80
+    protocol: TCP
+    targetPort: 80
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-jenkins-test
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp-jenkins-test
+  template:
+    metadata:
+      labels:
+        app: webapp-jenkins-test
+        #gitcommit: ${CICD_GIT_COMMIT}
+        Ambiente: test
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: Ambiente
+                operator: In
+                values:
+                - Testing
+      containers:
+      - image: registry-devops.agea.com.ar/ddr/jenkins-webapp:1
+        imagePullPolicy: Always
+        resources:
+          limits: 
+            cpu: 0.10
+            memory: "128Mi"
+          requests:
+            cpu: 0.10
+            memory: "70Mi"
+        name: webapp-jenkins-test
+        ports:
+        - containerPort: 80
+          name: nginx
+          protocol: TCP
