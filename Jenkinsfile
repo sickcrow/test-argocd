@@ -5,8 +5,8 @@ pipeline {
             steps {
                 sh '''
                 echo "Build & Push Docker"
-                docker build -t registry-devops.agea.com.ar/ddr/jenkins-webapp:${BUILD_ID} .
-                docker push registry-devops.agea.com.ar/ddr/jenkins-webapp:${BUILD_ID}
+                docker build -t registry-devops.agea.com.ar/ddr/webapp/jenkins-webapp:${BUILD_ID} .
+                docker push registry-devops.agea.com.ar/ddr/webapp/jenkins-webapp:${BUILD_ID}
 
                 echo "Clean docker env"
                 docker system prune -f
@@ -18,7 +18,7 @@ pipeline {
                 sh '''
                  ARGOCD_SERVER="devops.agea.com.ar/argocd"
                  APP_NAME="test-cd"
-                 IMAGE="registry-devops.agea.com.ar/ddr/jenkins-webapp:${BUILD_ID}"
+                 IMAGE="registry-devops.agea.com.ar/ddr/webapp/jenkins-webapp:${BUILD_ID}"
                  TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3YTE1MzBjOS1kNWZjLTQ4NTctYjI3ZS1kMjljYzkyYmVlYmYiLCJpYXQiOjE2MTQyMTk1NjYsImlzcyI6ImFyZ29jZCIsIm5iZiI6MTYxNDIxOTU2Niwic3ViIjoic2lja2Nyb3cifQ.5E-C2btyaSpr_riwcsK6YKweJova0wxN1ckNslgXn7o"
 
                         
