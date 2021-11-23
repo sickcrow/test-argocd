@@ -4,7 +4,13 @@ pipeline {
         stage('Dockerize llamadoresdev') {
             steps {
                 sh '''
-                docker ps
+                docker build -t registry-devops.agea.com.ar/ddr/jenkins-webapp:${BUILD_ID}
+
+                if [$(docker image ls | grep "registry-devops.agea.com.ar/ddr/jenkins-webapp:${BUILD_ID}" | wc -l == 1) ]; then
+                docker push registry-devops.agea.com.ar/ddr/jenkins-webapp:${BUILD_ID}
+                else
+                echo "[ERROR] BUILD & PUSH FAIL!"
+                fi
                  '''
             }
         }

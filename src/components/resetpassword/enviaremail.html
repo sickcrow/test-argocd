@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="password.css">
+        <title>Recuperar contraseña</title>
+    </head>
+    <body>
+        <div class="App">
+            <form id="resetpassword" class="backlogin h-100vh w-100">
+                <div class="login-form">
+                    <div class="login-title" >
+                        <img class="brand-logo" src="assets/brand-logo.png" alt="brand-logo" ></img>
+                    </div>
+                    <div style="margin-bottom: 40px; margin-top: -25px;">
+                        Escriba su dirección de email para recibir un correo de recuperación de contraseña. 
+                    </div>
+                    <div id="reset-form" >
+                        <div class="theme-input mx-auto">
+                            <input id="email" type="text" name="email" class='theme-input-box' placeholder="Ingrese su correo electrónico" autoComplete='off' />
+                        </div>
+                        <div class="div-button" >
+                            <button id="confirmarEmail" class=" theme-button">
+                                Confirmar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <script src="server.js"></script>
+        <script src="resetpassword.js"></script>
+    </body>
+</html>

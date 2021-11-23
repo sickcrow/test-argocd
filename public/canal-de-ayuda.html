@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="theme-color" content="#000000" />
+        <link rel="icon" href="favicon.ico" />
+        <link rel="stylesheet" href="public.css">
+        <title>Parada On Line - Canal de Ayuda</title>
+        <style>
+            #helpFreshdeskBottom { 
+                width: 31px;
+                height: 32px; 
+                z-index: 99999999999999;
+                opacity: 1; 
+                margin-right: auto;
+                margin-left: auto;
+                padding: 0px;
+            }
+
+            #helpFreshdesk {
+                width: 31px;
+                height: 32px;
+                margin: 0;
+                padding: 0;
+                border-radius: 100%;
+                cursor: pointer;   
+                background-image: url('../help.svg');
+                background-size: cover;
+                display: block;
+                z-index: 99999999999999;
+            }
+
+            #freshworks-container > div> iframe {
+                opacity: 0 !important;
+                display: none !important;      
+                }
+            #nota {
+                font-size: 11px;
+            }
+
+        </style>
+        <script>
+            window.fwSettings={
+              'widget_id':66000001404     
+              };
+              !function(){if("function"!=typeof window.FreshworksWidget){var n=function(){n.q.push(arguments)};n.q=[],window.FreshworksWidget=n}}() 
+        </script>
+        <script type='text/javascript' src='https://widget.freshworks.com/widgets/66000001404.js' async defer></script>
+
+    </head>
+    <body class="backlogin">
+        <div style="min-height: 95vh; max-width: 100%;">
+            <div class="title" style="text-align: center;" >
+                <img class="brand-logo" src="brand-logo.png" alt="brand-logo" />                    
+            </div>
+            <div style="margin-top: 5%; margin-left: 6%; margin-right: 5%; margin-bottom: 5%; text-align: justify">
+                <p class="title" style="text-align: center; font-size: 15px;"><strong>BIENVENIDO A PARADA ON LINE</strong></p>
+                <p>La App utilizada por vendedores de diarios y revistas, para la gestión de venta y entrega de productos bajo los esquemas de suscripciones y mostrador, así como la solicitud de productos a la Tienda para cumplir con los compromisos que adquieren con sus clientes.</p>
+                <p>Dejanos tu consulta haciendo clic en la siguiente imagen y nos comunicaremos a la brevedad</p>
+                <br>
+                <div id="helpFreshdeskBottom"> 
+                    <div onclick="openWidget()" id="helpFreshdesk" type="button" title="Canal de Ayuda"></div>
+                </div>                
+                <p id="nota">* No olvides, aclarar el celular de contacto, distribuidora, línea, vendedor y paquete.</p>
+            </div>
+        </div>
+    </body>
+</html>
+    
+
+<script>
+    function openWidget() {
+          FreshworksWidget('open');
+      } 
+</script>
+
+
+

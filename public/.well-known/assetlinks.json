@@ -1,0 +1,6 @@
+[{
+        "relation": ["delegate_permission/common.handle_all_urls"],
+        "target" : { "namespace": "android_app", "package_name": "paradaonline.twa",
+                     "sha256_cert_fingerprints": ["59:55:C8:B0:08:47:92:54:25:AD:2C:FC:B6:BA:42:B2:FF:90:8D:A4:BE:45:E8:9D:24:78:5F:6E:52:2A:62:02"] }
+      }
+]

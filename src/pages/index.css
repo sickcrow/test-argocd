@@ -1,0 +1,72 @@
+.menu {
+    left: 0;
+    background: #09142e;
+    height: calc(100vh - 35px);
+    height: 100vh;
+    z-index: 2;
+    color: white;
+}
+
+#box-content {
+    z-index: 1;
+}
+
+.transition-menu {
+    transition: left 0.5s;
+}
+
+.hiddenMenu {
+    left: -100vw;
+}
+.whatsapp-share-button{
+    float: right;
+    margin-left: -30px;
+    width: 22px;
+    height: 22px;
+}
+
+#notification {
+    position: relative;
+    top:-2em;
+    left: 4.5em;
+    color:white;
+    width: 1.5em;
+    height: 1.5em;
+    background-color: red;
+    line-height:1.5em;
+    text-align:center;
+    z-index: 99;
+    font-family:'Helvetica Neue', Helvetica, sans-serif;
+    font-weight:bold;
+    text-shadow:0px 1px 0px rgba(0,0,0,.15);
+ 
+    -webkit-box-shadow:
+        inset 0px 1px 0px rgba(255,255,255,35),
+        0px 1px 1px rgba(0,0,0,.2);
+    -moz-box-shadow:
+        inset 0px 1px 0px rgba(255,255,255,.35),
+        0px 1px 1px rgba(0,0,0,.2);
+    box-shadow:
+        inset 0px 1px 0px rgba(255,255,255,.35),
+        0px 1px 1px rgba(0,0,0,.2);
+ 
+    -webkit-border-radius:4em;
+    -moz-border-radius:4em;
+    border-radius:4em;
+ 
+    opacity:1;
+}
+
+.withNotif {
+    position: relative;
+    bottom: 10px;
+}
+
+.noNotif {
+    position: relative;
+    bottom: 0px;
+}
+
+#novedadesDescList {
+    overflow-y: auto;
+}

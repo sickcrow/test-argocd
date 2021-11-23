@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    font-family: Roboto, sans-serif;
+}
+
+.App {
+    text-align: center;
+  }
+
+.backlogin {
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #09142e !important;
+    background-attachment: fixed;
+    color: white !important;
+    font-family: Roboto, sans-serif;
+    max-width: 100%;
+    font-size: 13px;
+}
+
+.brand-logo {
+    margin-top: 10%;
+    width: 70px;
+    height: 50px;
+  }
+
+.store-logo {
+    width: 120x;
+    height: 40px;
+  }

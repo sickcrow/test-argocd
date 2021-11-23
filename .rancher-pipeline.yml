@@ -1,0 +1,34 @@
+stages:
+- name: Build
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: ddr/webapp/test:${CICD_GIT_TAG}
+      pushRemote: true
+      registry: registry-devops.agea.com.ar
+    when:
+      event:
+        include:
+        - tag
+- name: Deploy
+  steps:
+  - applyYamlConfig:
+      path: ./deployment.yaml
+    when:
+      event:
+        include:
+        - tag
+timeout: 60
+notification:
+  recipients:
+  - recipient: it-infraestructurasunix@agea.com.ar
+    notifier: c-qjkb9:n-wzfdq
+  - recipient: DDR-Cloud@agea.com.ar
+    notifier: c-qjkb9:n-qbffx
+  - recipient: soporte.ddrcloud@desarrollosnea.com
+    notifier: c-qjkb9:n-qbffx
+  condition:
+  - Success
+  - Changed
+  - Failed

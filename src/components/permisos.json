@@ -1,0 +1,22 @@
+[
+    "KIOSCO.CuentaCorriente",
+    "KIOSCO.Suscripciones",
+    "KIOSCO.Suscripciones.HojaDeRuta",
+    "KIOSCO.Suscripciones.Novedades",
+    "KIOSCO.Suscripciones.Reclamos",
+    "KIOSCO.Pedidos",
+    "KIOSCO.Pedidos.Publicaciones",
+    "KIOSCO.Pedidos.CargarPedidos",
+    "KIOSCO.Pedidos.EditarPedidos",
+    "KIOSCO.Pedidos.MisPedidos",
+    "KIOSCO.Reclamos.AbrirReclamo",
+    "KIOSCO.Devoluciones",
+    "KIOSCO.RegistrarVenta",
+    "KIOSCO.Notificaciones", 
+    "KIOSCO.Tienda",
+    "KIOSCO.Tienda.Productos",
+    "KIOSCO.Tienda.CargarPedidos",
+    "KIOSCO.Tienda.MisPedidos",
+    "KIOSCO.Tienda.Reclamos",
+    "KIOSCO.Novedades"
+]

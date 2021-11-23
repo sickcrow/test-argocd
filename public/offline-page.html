@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, height=device-height, viewport-fit=cover" />
+        <meta name="theme-color" content="#000000" />
+        <link rel="icon" href="favicon.ico" />
+        <title>Parada On Line - Sin Conex&oacute;n</title>
+        <style>
+            .backlogin {
+                    background-image: url("background.jpg");
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-color: #09142e !important;
+                    background-attachment: fixed;
+                    color: white !important;
+                    font-family: Roboto, sans-serif;
+                    font-size: 14px;
+                    max-width: 100%;
+                }
+                .brand-logo {
+                    margin-top: 10%;
+                    width: 70px;
+                    height: 50px;
+                }
+        </style>
+    </head>
+    <body class="backlogin">
+        <div style="min-height: 90vh; max-width: 100%; margin-top: 0px;">
+            <div class="title" style="text-align: center" >
+                <img class="brand-logo" src="brand-logo.png" alt="brand-logo" />                    
+            </div> 
+            <div style="top:50%; left:50%; transform: translate(-50%, -50%); position: fixed; text-align: center">
+                <img src="no-wifi-icon.png" style="width: 60px; height: 50px;"/>
+                <div style="margin-top: 10px">Por favor, verifica tu conexi&oacute;n de Internet</div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+    window.addEventListener('online', handleConnection);
+
+    function handleConnection() {
+        window.location.href = window.location.origin
+    }
+</script>
