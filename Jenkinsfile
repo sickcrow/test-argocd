@@ -6,10 +6,10 @@ pipeline {
                 sh '''
                 echo "Build & Push Docker"
                 docker build -t registry-devops.agea.com.ar/ms/webapp/jenkins-webapp:${BUILD_ID} .
-                docker push registry-devops.agea.com.ar/ms/webapp/jenkins-webapp:${BUILD_ID}
+                #docker push registry-devops.agea.com.ar/ms/webapp/jenkins-webapp:${BUILD_ID}
 
                 echo "Clean docker env"
-                docker system prune -f
+                #docker system prune -f
                 '''
             }
         }
