@@ -1,4 +1,8 @@
-pipeline {
+pipeline { 
+    environment {
+    registry = "registry-devops.agea.com.ar"
+    registryCredential = 'registry-devops'
+    }
     agent any
     stages {
         stage('Dockerize webapp') {
