@@ -27,7 +27,6 @@ pipeline {
       steps{
         sh "docker rmi registry-devops.agea.com.ar/ms/jenkins-webapp:$BUILD_ID"
         sh "docker rmi registry-devops.agea.com.ar/ms/jenkins-webapp:latest"
-        sh "docker image prune -a -f"
       }
     }
   }
