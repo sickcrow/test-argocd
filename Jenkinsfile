@@ -24,12 +24,12 @@ pipeline {
                         
                  # Deploy image to K8S
                  # Customize image 
-                 ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} --grpc-web-root-path /argocd app set $APP_NAME --kustomize-image $IMAGE
-                 ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} app sync ${ARGOAPP} --async --grpc-web-root-path /argocd
+                 ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} --grpc-web-root-path /argocd app set ${APP_NAME} --kustomize-image ${IMAGE}
+                 ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} --grpc-web-root-path /argocd app sync ${APP_NAME} --async
                         
                  # Deploy to ArgoCD
-                 ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} --grpc-web-root-path /argocd app sync $APP_NAME --force
-                 ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} --grpc-web-root-path /argocd app wait $APP_NAME --timeout 600
+                 ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} --grpc-web-root-path /argocd app sync ${APP_NAME} --force
+                 ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} --grpc-web-root-path /argocd app wait ${APP_NAME} --timeout 600
                 '''
             }
         }
