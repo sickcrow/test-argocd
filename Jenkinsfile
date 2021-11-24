@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    imagename = "registry-devops.agea.com.ar/ms/jenkins-webapp:${BUILD_ID}}"
+    imagename = "registry-devops.agea.com.ar/ms/jenkins-webapp:${BUILD_ID}"
     registryCredential = 'registry-devops'
     dockerImage = ''
   }
