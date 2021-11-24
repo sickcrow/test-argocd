@@ -1,0 +1,8 @@
+node_modules
+npm-debug.log
+cd
+cd_OLD
+yaml
+*.yaml
+Jenkinsfile*
+jenkins*
