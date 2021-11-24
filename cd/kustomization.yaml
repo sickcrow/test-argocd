@@ -4,4 +4,4 @@ kind: Kustomization
 namePrefix: kustomize-
 
 resources:
-- llamadores.yaml
+- deployment.yaml
