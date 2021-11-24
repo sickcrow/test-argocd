@@ -46,7 +46,7 @@ pipeline {
                         
         # Deploy to ArgoCD
         ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} --grpc-web-root-path /argocd app sync ${APP_NAME} --force
-        ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} --grpc-web-root-path /argocd app wait ${APP_NAME} --timeout 30
+        ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} --grpc-web-root-path /argocd app wait ${APP_NAME} --timeout 60
         '''
       }
     }
