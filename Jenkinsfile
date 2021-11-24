@@ -25,8 +25,10 @@ pipeline {
    }
     stage('Remove Unused docker image') {
       steps{
-        sh "docker rmi registry-devops.agea.com.ar/ms/jenkins-webapp:$BUILD_ID"
-        sh "docker rmi registry-devops.agea.com.ar/ms/jenkins-webapp:latest"
+        sh '''
+        docker rmi registry-devops.agea.com.ar/ms/jenkins-webapp:$BUILD_ID
+        docker rmi registry-devops.agea.com.ar/ms/jenkins-webapp:latest
+        '''
       }
     }
     stage('Deploy k8s') {
@@ -44,7 +46,7 @@ pipeline {
                         
         # Deploy to ArgoCD
         ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} --grpc-web-root-path /argocd app sync ${APP_NAME} --force
-        ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} --grpc-web-root-path /argocd app wait ${APP_NAME} --timeout 600
+        ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} --grpc-web-root-path /argocd app wait ${APP_NAME} --timeout 30
         '''
       }
     }
