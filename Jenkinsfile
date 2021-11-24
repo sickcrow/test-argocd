@@ -16,7 +16,7 @@ pipeline {
     stage('Deploy Image') {
       steps{
         script {
-          docker.withRegistry( '', registryCredential ) {
+          docker.withRegistry( 'registry-devops.agea.com.ar', registryCredential ) {
              dockerImage.push("$BUILD_ID")
              dockerImage.push('latest')
           }
