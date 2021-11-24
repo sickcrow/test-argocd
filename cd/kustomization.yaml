@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namePrefix: webapp-jenkins-test
+#namePrefix: webapp-jenkins-test
 #namePrefix: kustomize-
 
 resources:
