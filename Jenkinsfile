@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    imagename = "registry-devops.agea.com.ar/ms/jenkins-webapp}"
+    imagename = "registry-devops.agea.com.ar/ms/jenkins-webapp:${BUILD_ID}}"
     registryCredential = 'registry-devops'
     dockerImage = ''
   }
@@ -9,7 +9,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          dockerImage = docker.build imagename:${BUILD_ID}
+          dockerImage = docker.build imagename
         }
       }
     }
@@ -25,8 +25,8 @@ pipeline {
    }
     stage('Remove Unused docker image') {
       steps{
-        sh "docker rmi $imagename:$BUILD_ID"
-         sh "docker rmi $imagename:latest"
+        sh "docker rmi registry-devops.agea.com.ar:ms/jenkins-webapp:$BUILD_ID"
+         sh "docker rmi registry-devops.agea.com.ar:ms/jenkins-webapp::latest"
  
       }
     }
