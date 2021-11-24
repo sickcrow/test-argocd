@@ -6,7 +6,7 @@ pipeline {
                 sh '''
                 echo "Build & Push Docker"
                 docker build -t registry-devops.agea.com.ar/ms/webapp/jenkins-webapp:${BUILD_ID} .
-                #docker push registry-devops.agea.com.ar/ms/webapp/jenkins-webapp:${BUILD_ID}
+                docker push registry-devops.agea.com.ar/ms/webapp/jenkins-webapp:${BUILD_ID}
 
                 echo "Clean docker env"
                 #docker system prune -f
@@ -25,7 +25,6 @@ pipeline {
                  # Deploy image to K8S
                  # Customize image 
                  ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} --grpc-web-root-path /argocd app set ${APP_NAME} --kustomize-image ${IMAGE}
-                 ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} --grpc-web-root-path /argocd app sync ${APP_NAME} --async
                         
                  # Deploy to ArgoCD
                  ARGOCD_SERVER=$ARGOCD_SERVER argocd --auth-token ${TOKEN} --grpc-web-root-path /argocd app sync ${APP_NAME} --force
